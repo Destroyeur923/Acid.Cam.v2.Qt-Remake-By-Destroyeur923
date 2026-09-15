@@ -14,3 +14,4 @@ deploy-win64/
 flatpak-build/
 flatpak-repo/
 *.flatpak
+docs/*.mp4 
