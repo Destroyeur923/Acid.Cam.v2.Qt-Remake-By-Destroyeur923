@@ -1,5 +1,15 @@
 *DS_Store
 build/
+
+# libacidcam est un projet séparé (lostjared/libacidcam) cloné à côté, avec son
+# propre dépôt git. L'inclure casserait le push (dépôt imbriqué) et dupliquerait
+# 137 Mo qui ne nous appartiennent pas.
+libacidcam/
+
+# Dossier produit par scripts/package-msys2.sh (~280 Mo de DLL) : il se
+# redistribue via une Release GitHub, jamais dans le dépôt.
+AcidCam-Remake-win64/
+deploy-win64/
 .flatpak-builder/
 flatpak-build/
 flatpak-repo/

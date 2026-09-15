@@ -430,6 +430,19 @@ QToolTip {
     font-size: 11px;
 }
 
+/* Scroll Areas - without this they fall back to Fusion's light palette and
+   paint their viewport white, which makes their contents unreadable on this
+   dark theme. The second rule targets the widget placed inside the viewport. */
+QScrollArea {
+    background-color: #0f0f0f;
+    border: 1px solid #2c2c2c;
+    border-radius: 4px;
+}
+
+QScrollArea > QWidget > QWidget {
+    background-color: #0f0f0f;
+}
+
 /* Focus Rectangle - Remove default ugly outline */
 QWidget:focus {
     outline: none;

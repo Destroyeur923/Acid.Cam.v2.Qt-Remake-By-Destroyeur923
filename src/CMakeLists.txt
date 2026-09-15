@@ -87,6 +87,7 @@ endif()
 
 pkg_check_modules(ACIDCAM REQUIRED acidcam)
 pkg_check_modules(SDL2 REQUIRED sdl2)
+pkg_check_modules(SWRESAMPLE REQUIRED IMPORTED_TARGET libswresample)
 
 # Remove SDL2main from link libraries - this Qt app has its own main(),
 # and SDL2main provides a conflicting main() wrapper.
@@ -141,6 +142,16 @@ set(SOURCES
     ffmpeg_write.cpp
     ffmpeg_encoder_thread.cpp
     ffmpeg_mux_thread.cpp
+    filter_utils.cpp
+    audio_player.cpp
+    timeline_view.cpp
+    timeline_analysis.cpp
+    montage_v2_window.cpp
+    photo_window.cpp
+    filter_browser_panel.cpp
+    help_about.cpp
+    camera_enum.cpp
+    webcam_window.cpp
 )
 
 set(HEADERS
@@ -246,6 +257,7 @@ if(QT_VERSION_MAJOR EQUAL 6)
         ${OpenCV_LIBS}
         ${SDL2_LIBRARIES}
         mxwrite
+        PkgConfig::SWRESAMPLE
     )
 else()
     target_link_libraries(${PROJECT_NAME} PRIVATE
@@ -259,6 +271,7 @@ else()
         ${OpenCV_LIBS}
         ${SDL2_LIBRARIES}
         mxwrite
+        PkgConfig::SWRESAMPLE
     )
 endif()
 
@@ -270,6 +283,11 @@ if(WIN32)
         imm32
         dwmapi
         uxtheme
+        # DirectShow: enumerating the machine's cameras with their real names
+        # (OpenCV has no enumeration API and Qt Multimedia is not linked here).
+        strmiids
+        ole32
+        oleaut32
     )
 endif()
 

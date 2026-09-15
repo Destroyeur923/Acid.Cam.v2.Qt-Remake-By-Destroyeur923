@@ -58,7 +58,7 @@ namespace token {
         return temp;
     }
     
-    template<> char* substr(char *t, size_t start, size_t stop) {
+    template<> inline char* substr(char *t, size_t start, size_t stop) {
         char *temp = new char [ stop-start+1 ];
         size_t pos = 0;
         for(size_t i = start; i < stop; i++)

@@ -24,9 +24,16 @@
 #include "slitscan_win.h"
 #include "ffmpeg_write.h"
 #include "ffmpeg_mux_thread.h"
+#include "montage_v2_window.h"
+#include "photo_window.h"
+#include "webcam_window.h"
+#include "help_about.h"
 
 class SearchWindow;
 class ChromaWindow;
+class MontageV2Window;
+class WebcamWindow;
+class PhotoWindow;
 
 class AC_MainWindow : public QMainWindow {
     Q_OBJECT
@@ -50,8 +57,11 @@ public:
     QSlider *slide_r, *slide_g, *slide_b, *slide_bright, *slide_gamma, *slide_saturation;
     QProgressBar *progress_bar;
     QComboBox *color_maps, *filters, *menu_cat;
-    QMenu *file_menu, *controls_menu, *help_menu, *options, *movement, *speed_menu;
+    QMenu *file_menu, *controls_menu, *help_menu, *options, *movement, *speed_menu, *montage_menu, *photo_menu, *webcam_menu;
     QAction *file_exit, *file_new_capture, *file_new_video;
+    QAction *open_montage_v2;
+    QAction *open_photo;
+    QAction *open_webcam;
     QAction *controls_snapshot, *controls_pause, *controls_step, *controls_stop, *controls_setimage,*controls_setkey,*controls_showvideo, *clear_images, *reset_filters;
     QAction *help_about;
     QAction *open_search;
@@ -161,7 +171,10 @@ public slots:
     void onAudioMuxFinished(bool success, QString tempFile, QString outputFile);
     void customSearchChanged(const QString &text);
     void addSearchResult();
-     
+    void openMontageV2();
+    void openPhoto();
+    void openWebcam();
+
 private:
     void createControls();
     void createMenu();
@@ -177,6 +190,9 @@ private:
     OptionsWindow *pref_window;
     SlitScanWindow *slit_win;
     ColorRangeWindow *color_range_window;
+    MontageV2Window *montage_v2_window;
+    PhotoWindow *photo_window;
+    WebcamWindow *webcam_window;
     cv::VideoCapture capture_camera, capture_video;
     cv::VideoWriter writer;
     unsigned long video_frames;

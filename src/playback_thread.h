@@ -110,6 +110,9 @@ public:
     void setStep();
     void setDisplayed(bool shown);
     void setIndexChanged(std::string name);
+    // Same, for a filter whose name contains "SubFilter": it needs the index
+    // of the second filter to combine with, or it does nothing.
+    void setIndexChanged(std::string name, int subfilter);
     void setSingleMode(bool val);
     void drawFilter(cv::Mat &frame, FilterValue &filter);
     void drawEffects(cv::Mat &frame);

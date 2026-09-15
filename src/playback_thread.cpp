@@ -385,14 +385,21 @@ void Playback::setPref(int thread_count, int intense) {
 }
 
 void Playback::setIndexChanged(std::string value) {
+    setIndexChanged(value, -1);
+}
+
+void Playback::setIndexChanged(std::string value, int subfilter) {
     mutex.lock();
     prev_filter = current_filter;
     current_filter = filter_map[value];
+    // Sub-filter hosts need the second filter the caller picked; the entry in
+    // filter_map carries no choice of its own.
+    current_filter.subfilter = subfilter;
     // here:
     //ac::release_all_objects();
     alpha = 1.0;
     mutex.unlock();
-    
+
 }
 
 void Playback::setSingleMode(bool val) {
@@ -446,11 +453,11 @@ void Playback::drawFilter(cv::Mat &frame, FilterValue &f) {
         if(f.filter < 0 || f.filter >= static_cast<int>(ac::draw_strings.size()))
             return;
         const std::string &filter_name = ac::draw_strings[f.filter];
-        if(single_mode == true &&
-           filter_name.find("SubFilter") != std::string::npos)
-            return;
-        
-        if(single_mode == false && filter_name.find("SubFilter") != std::string::npos && f.subfilter == -1)
+        // A sub-filter host without a sub-filter has nothing to combine with,
+        // so it is skipped. Single mode used to skip them unconditionally,
+        // which made every one of them a silent no-op in the Lab; now the Lab
+        // asks for the sub-filter and they run like anywhere else.
+        if(filter_name.find("SubFilter") != std::string::npos && f.subfilter == -1)
             return;
         
         if(ac::getMaxAllocated() < 1080 && filter_name.find("Intertwine") != std::string::npos)

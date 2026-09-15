@@ -128,11 +128,14 @@ AC_MainWindow::AC_MainWindow(QWidget *parent) : QMainWindow(parent) {
     draw_strings = ac::draw_strings;
     ac::filter_menu_map["User"].menu_list->push_back("No Filter");
     playback = new Playback();
+    montage_v2_window = nullptr;
+    photo_window = nullptr;
+    webcam_window = nullptr;
     mux_thread = new FFmpegMuxThread(this);
     settings = new QSettings("LostSideDead", "Acid Cam Qt");
     setGeometry(100, 100, 900, 900);
     setMinimumSize(900, 900);
-    setWindowTitle(tr("Acid Cam v2 - Qt"));
+    setWindowTitle(tr("Acid Cam v2 Qt - Remake By Destroyeur923"));
     createControls();
     createMenu();
     speed_index = 0;
@@ -620,8 +623,23 @@ void AC_MainWindow::createMenu() {
     file_menu = menuBar()->addMenu(tr("&File"));
     controls_menu = menuBar()->addMenu(tr("&Controls"));
     options = menuBar()->addMenu(tr("&Options"));
+    montage_menu = menuBar()->addMenu(tr("&Montage"));
+    photo_menu = menuBar()->addMenu(tr("&Photo"));
+    webcam_menu = menuBar()->addMenu(tr("&WebCam"));
     help_menu = menuBar()->addMenu(tr("Help"));
-    
+
+    open_montage_v2 = new QAction(tr("Open Montage V2 (beta)..."), this);
+    montage_menu->addAction(open_montage_v2);
+    connect(open_montage_v2, SIGNAL(triggered()), this, SLOT(openMontageV2()));
+
+    open_photo = new QAction(tr("Open Photo..."), this);
+    photo_menu->addAction(open_photo);
+    connect(open_photo, SIGNAL(triggered()), this, SLOT(openPhoto()));
+
+    open_webcam = new QAction(tr("Open WebCam..."), this);
+    webcam_menu->addAction(open_webcam);
+    connect(open_webcam, SIGNAL(triggered()), this, SLOT(openWebcam()));
+
     file_new_capture = new QAction(tr("Capture from Webcam"),this);
     file_new_capture->setShortcut(tr("Ctrl+N"));
     file_menu->addAction(file_new_capture);
@@ -841,6 +859,47 @@ void AC_MainWindow::showFull() {
 
 void AC_MainWindow::showImageWindow() {
     image_window->show();
+}
+
+void AC_MainWindow::openMontageV2() {
+    if(playback->isRunning()) {
+        playback->Release();
+        Log(tr("Capture principale arrêtée pendant que le Montage V2 est ouvert.\n"));
+    }
+    if(montage_v2_window == nullptr) {
+        montage_v2_window = new MontageV2Window(this);
+    }
+    montage_v2_window->show();
+    montage_v2_window->raise();
+    montage_v2_window->activateWindow();
+}
+
+void AC_MainWindow::openPhoto() {
+    if(playback->isRunning()) {
+        playback->Release();
+        Log(tr("Capture principale arrêtée pendant que l'onglet Photo est ouvert.\n"));
+    }
+    if(photo_window == nullptr) {
+        photo_window = new PhotoWindow(this);
+    }
+    photo_window->show();
+    photo_window->raise();
+    photo_window->activateWindow();
+}
+
+void AC_MainWindow::openWebcam() {
+    // Both would fight over the same camera device and over libacidcam's
+    // global filter state, so the main capture has to let go first.
+    if(playback->isRunning()) {
+        playback->Release();
+        Log(tr("Capture principale arrêtée pendant que l'onglet WebCam est ouvert.\n"));
+    }
+    if(webcam_window == nullptr) {
+        webcam_window = new WebcamWindow(this);
+    }
+    webcam_window->show();
+    webcam_window->raise();
+    webcam_window->activateWindow();
 }
 
 void AC_MainWindow::resetIndex() {
@@ -1970,12 +2029,10 @@ void AC_MainWindow::frameInc() {
 }
 
 void AC_MainWindow::help_About() {
-    QString about_str;
-    QTextStream stream(&about_str);
-    stream << tr("<b>Acid Cam Qt version: ") << ac_version << " filters: " << ac::version.c_str() << "</b><br><br> ";
-    stream << tr("Engineering by <b>Jared Bruni</b><br>Testing by <b>Boris D. S</b><br><br><b>This software is dedicated to all the people that experience mental illness. </b><br><br><a href=\"https://lostsidedead.biz/wish\">My Wish List</a><br>\n");
-    
-    QMessageBox::information(this, tr("About Acid Cam"), about_str);
+    // The same dialog the Photo, Montage V2 and WebCam windows show: the
+    // original Acid Cam credits, plus who added those three features. Sharing
+    // one copy means the two can never drift apart.
+    showAboutDialog(this);
 }
 
 void AC_MainWindow::openSearch() {
