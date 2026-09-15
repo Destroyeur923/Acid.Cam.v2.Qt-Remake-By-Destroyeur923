@@ -1,20 +1,8 @@
 # Acid Cam v2 Qt — Remake By Destroyeur923
 
-<!--
-  ▲ LA VIDÉO DE DÉMO SE COLLE JUSTE ICI ▲
 
-  GitHub ne lit PAS une vidéo liée depuis le dépôt (elle s'affiche comme un
-  simple lien). Pour avoir un vrai lecteur dans la page, il faut que le fichier
-  soit hébergé par GitHub lui-même :
+https://github.com/user-attachments/assets/02d3e376-932c-40c5-99bd-73de698689d7
 
-    1. Ouvre cette page sur github.com, clique sur le crayon (Edit)
-    2. Glisse-dépose docs/acidcam_demo_destroyeur923.mp4 dans l'éditeur
-    3. GitHub téléverse le fichier et insère tout seul une ligne du genre
-       https://github.com/user-attachments/assets/xxxxxxxx-xxxx-...
-    4. Colle cette ligne à la place de ce commentaire, puis valide
-
-  C'est exactement le procédé utilisé par les captures d'écran plus bas.
--->
 
 > 🎬 **[Voir la vidéo de démonstration](docs/acidcam_demo_destroyeur923.mp4)**
 > *(en attendant qu'elle soit intégrée en lecteur — voir le commentaire ci-dessus)*
