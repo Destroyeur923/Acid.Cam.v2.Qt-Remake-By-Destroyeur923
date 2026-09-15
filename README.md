@@ -3,10 +3,6 @@
 
 https://github.com/user-attachments/assets/02d3e376-932c-40c5-99bd-73de698689d7
 
-
-> 🎬 **[Voir la vidéo de démonstration](docs/acidcam_demo_destroyeur923.mp4)**
-> *(en attendant qu'elle soit intégrée en lecteur — voir le commentaire ci-dessus)*
-
 ---
 
 Une version retravaillée d'[Acid Cam v2 Qt](https://github.com/lostjared/Acid.Cam.v2.Qt), l'application
