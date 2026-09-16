@@ -16,9 +16,9 @@ de travailler avec ces filtres, ainsi qu'un système pour les organiser.
 
 | Fonctionnalité | Ce qu'elle permet |
 |---|---|
-| 🖼️ **Photo** | empiler des filtres sur une image fixe, avec aperçu isolé avant de valider |
-| 🎬 **Montage V2** | poser des effets sur une timeline vidéo, sur des pistes qui se superposent |
-| 📹 **WebCam** | appliquer des filtres **en direct** sur une caméra, avec aperçu et enregistrement |
+| **Photo** | empiler des filtres sur une image fixe, avec aperçu isolé avant de valider |
+| **Montage V2** | poser des effets sur une timeline vidéo, sur des pistes qui se superposent |
+| **WebCam** | appliquer des filtres **en direct** sur une caméra, avec aperçu et enregistrement |
 
 Et, partagé par les trois :
 
@@ -28,7 +28,7 @@ Et, partagé par les trois :
 - **Glisser-déposer** partout : sur l'image, sur la timeline, sur la caméra, sur une collection
 - **Aide intégrée** en français et en anglais dans chaque fonctionnalité (`F1`)
 
-📖 **[Documentation complète des fonctionnalités →](FONCTIONNALITES.md)**
+**[Documentation complète des fonctionnalités →](FONCTIONNALITES.md)**
 
 ## Aperçu
 
@@ -55,7 +55,7 @@ Télécharger l'archive `AcidCam-Remake-win64.zip` depuis la page
 
 Rien d'autre à installer : toutes les bibliothèques nécessaires sont dans le dossier.
 
-> ⚠️ Décompresse l'archive **entièrement** avant de lancer l'exécutable. Ouvrir le `.exe`
+> Décompresse l'archive **entièrement** avant de lancer l'exécutable. Ouvrir le `.exe`
 > directement depuis le zip ne fonctionne pas : il ne trouvera pas ses DLL.
 
 ### Option 2 — Compiler depuis les sources (Windows / MSYS2)
