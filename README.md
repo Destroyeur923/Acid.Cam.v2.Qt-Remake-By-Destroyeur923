@@ -22,9 +22,9 @@ de travailler avec ces filtres, ainsi qu'un système pour les organiser.
 
 Et, partagé par les trois :
 
-- **Collections** — ranger les filtres dans des dossiers colorés, avec favoris et renommage
-- **Sous-filtres** — plusieurs centaines de filtres inutilisables auparavant sont désormais accessibles
-- **Intensité** — doser chaque filtre de 0 à 100 % au lieu du tout ou rien
+- **Collections** - ranger les filtres dans des dossiers colorés, avec favoris et renommage
+- **Sous-filtres** - plusieurs centaines de filtres inutilisables auparavant sont désormais accessibles
+- **Intensité** - doser chaque filtre de 0 à 100 % au lieu du tout ou rien
 - **Glisser-déposer** partout : sur l'image, sur la timeline, sur la caméra, sur une collection
 - **Aide intégrée** en français et en anglais dans chaque fonctionnalité (`F1`)
 
@@ -42,12 +42,12 @@ et se **compositent** entre pistes. Export H.264 avec l'audio d'origine, parfait
 
 ### WebCam
 Deux vues côte à côte : le direct avec les filtres appliqués, et le même direct **plus le filtre
-sélectionné** — un aperçu live avant de décider. Un curseur d'intensité par filtre pour régler vite
+sélectionné** - un aperçu live avant de décider. Un curseur d'intensité par filtre pour régler vite
 pendant une session. Miroir et enregistrement H.264.
 
 ## Installation
 
-### Option 1 — Windows, version prête à l'emploi (recommandé)
+### Option 1 - Windows, version prête à l'emploi (recommandé)
 
 Télécharger l'archive `AcidCam-Remake-win64.zip` depuis la page
 **[Releases](../../releases)**, la décompresser n'importe où, et double-cliquer sur
@@ -102,7 +102,7 @@ cmake --build build
 L'exécutable est `src/build/acidcam-qt.exe`. Lancé depuis le terminal MINGW64 il trouve ses
 DLL tout seul.
 
-**4. (facultatif) Produire une version autonome** — un dossier qui fonctionne sur une machine
+**4. (facultatif) Produire une version autonome** - un dossier qui fonctionne sur une machine
 sans MSYS2 ni Qt, c'est-à-dire ce qui est distribué en Release :
 
 ```sh
@@ -127,9 +127,9 @@ Acid Cam est créé et développé par **Jared Bruni** —
 Le README d'origine du projet est conservé ici : [README_UPSTREAM.md](README_UPSTREAM.md).
 
 Les fonctionnalités **Photo**, **Montage V2** et **WebCam**, le système de collections, les
-sous-filtres, l'intensité et l'aide intégrée ont été ajoutés par **Destroyeur923** —
+sous-filtres, l'intensité et l'aide intégrée ont été ajoutés par **Destroyeur923** -
 [github.com/Destroyeur923](https://github.com/Destroyeur923).
 
 ## Licence
 
-Même licence que le projet d'origine — voir [LICENSE](LICENSE).
+Même licence que le projet d'origine - voir [LICENSE](LICENSE).
