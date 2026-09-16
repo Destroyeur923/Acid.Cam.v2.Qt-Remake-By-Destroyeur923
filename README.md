@@ -1,4 +1,4 @@
-# Acid Cam v2 Qt — Remake By Destroyeur923
+# Acid Cam v2 Qt - Remake By Destroyeur923
 
 
 https://github.com/user-attachments/assets/02d3e376-932c-40c5-99bd-73de698689d7
